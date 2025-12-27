@@ -1,7 +1,6 @@
 #root {
     max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+    margin: 0;
     text-align: center;
 }
 
@@ -37,15 +36,75 @@ h2 {
     font-size: 16px;
     outline: none;
     transition: 0.3s;
+    box-sizing: border-box;
 }
 
-.input:focus {
-    border-color: #4caf50;
+.input-form {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-form button {
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.input-form button:hover {
+    background-color: #45a049;
+}
+
+input:focus {
+    border-color: #4585fe;
+    box-shadow: 0 0 0 3px rgba(69, 133, 254, 0.08);
 }
 
 .loading {
     margin-top: 20px;
     color: #888;
+    font-size: 16px;
+}
+
+.dots::after,
+.dots::before {
+    content: '';
+    animation: dots 1s steps(3, end) infinite;
+}
+
+@keyframes dots {
+    0%,
+    20% {
+        color: rgba(0, 0, 0, 0);
+        content: ".";
+    }
+    40% {
+        color: black;
+        content: ".";
+    }
+    60% {
+        color: black;
+        content: ".";
+    }
+    80% {
+        color: black;
+        content: ".";
+    }
+    100% {
+        color: rgba(0, 0, 0, 0);
+        content: "";
+    }
+}
+
+.error {
+    color: red;
     font-size: 16px;
 }
 
@@ -55,4 +114,45 @@ h2 {
     background: #fafafa;
     border-radius: 10px;
     border: 1px solid #eaeaea;
+}
+
+
+/* Make QR and inputs scale nicely on small screens */
+
+.qr-box {
+    width: 100%;
+    height: auto;
+    max-width: 260px;
+    margin: 0 auto;
+    display: block;
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        max-width: 90%;
+        border-radius: 10px;
+        /* padding: 15px; */
+        margin: 0;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    .input {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+    .input-form {
+        gap: 15px;
+    }
+    .input-form button {
+        width: 100%;
+        padding: 14px;
+        font-size: 17px;
+    }
+    .loading,
+    .error {
+        font-size: 15px;
+    }
 }
